@@ -19,5 +19,9 @@
     "conversion"
   ],
   "author": "Filipe Neres da Silva Vitorino",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/filipeneres/simple-diff-js.git"
+  },
   "license": "MIT"
 }
