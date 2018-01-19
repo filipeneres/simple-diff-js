@@ -1,6 +1,6 @@
 {
   "name": "simple-diff-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple vanilla JS lib that compare two objects",
   "main": "./src/simple-diff.js",
   "scripts": {
