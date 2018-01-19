@@ -2,7 +2,7 @@
   "name": "simple-diff-js",
   "version": "1.0.0",
   "description": "A simple vanilla JS lib that compare two objects",
-  "main": "src/simple-diff.js",
+  "main": "./src/simple-diff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

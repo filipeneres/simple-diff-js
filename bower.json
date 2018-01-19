@@ -2,7 +2,7 @@
   "name": "simple-diff-js",
   "version": "1.0.0",
   "description": "A simple vanilla JS lib that compare two objects",
-  "main": "simple-diff.js",
+  "main": "./src/simple-diff.js",
   "authors": [
     "Filipe Neres da Silva Vitorino"
   ],
