@@ -1,13 +1,17 @@
 
+/** @global */
 var SimpleDiffJs = {}
-
-/**
- * 
- */
 SimpleDiffJs.simpleDiff = simpleDiff;
 
 /**
- * Function that compare two objects and overload the first with 
+ * @function simpleDiff
+ * 
+ * Function that compare two objects and overload the first with properties called "[property]_changed";
+ * @param {object} newObject - The new version of the object that will be compared, this object will be overloaded with
+ * dynamic properties called "[originalPropertyName]_changed" with the result.
+ * @param {object} oldObject - The old version of the object that will be compared.
+ * @param {boolean} strict - This argument define what kind of comparison will used, strict compare or type-converting compare
+ * if don't informed, by default, the kind of compare will be strinct.
  */
 function simpleDiff(newObject, oldObject, strict){
     strict === false ? simpleDiffObjects(newObject, oldObject, typeConvertingCompare) : simpleDiffObjects(newObject, oldObject, strictCompare);
@@ -25,6 +29,10 @@ function isNullUndefined(newObject, oldObject){
     return (newObject === null || newObject === undefined) || (oldObject === null || oldObject === undefined)
 }
 
+/**
+ * For Arrays the type of compare will make no difference, 'cause the array will be serialized to be compared,
+ * note that an array only will be the same if both objects are exactly equals.
+ */
 function serializeAndCompareArray(newArray, oldArray){
     return JSON.stringify(newArray) === JSON.stringify(oldArray);
 }
@@ -55,14 +63,13 @@ function checkIfObjectWasChanged(newObject){
 
 function simpleDiffObjects(newObject, oldObject, compareFunction) {
     if(isNullUndefined(newObject, oldObject)){
-        console.log("SimpleDiff: Cant diff objects 'cause one or both objects are null/undefined");
         return null;
     }
     var listNewPropertyNames = Object.keys(newObject);
     listNewPropertyNames.map(function(property){
         var result;
         if(oldObject.hasOwnProperty(property)){
-            if(typeof newObject[property] === "object"){
+            if(typeof newObject[property] === "object" && newObject[property] !== null){
                 if(!Array.isArray(newObject[property])){
                     result = simpleDiffObjects(newObject[property], oldObject[property], compareFunction);
                 } else {
