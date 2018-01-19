@@ -1,4 +1,4 @@
-# simple-diff-js
+# Simple DiffJS
 A simple vanilla JS lib that compare two objects
 
 ## Getting Started
